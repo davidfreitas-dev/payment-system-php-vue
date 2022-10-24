@@ -22,8 +22,7 @@
         axios
             .post('/payment/pix')
             .then((response) => {
-                data.value = response.data.transaction_data
-                console.log(data.value);
+                data.value = response.data.data.transaction_data
             });
     }
 

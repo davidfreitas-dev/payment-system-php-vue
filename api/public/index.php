@@ -7,6 +7,7 @@ use Slim\Factory\AppFactory;
 use App\DB\Database;
 use App\Model\User;
 use App\Model\Auth;
+use App\Model\PaymentMethod;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -164,36 +165,9 @@ $app->delete('/users/delete/{id}', function (Request $request, Response $respons
 
 $app->post('/payment/pix', function (Request $request, Response $response, array $args) {
  
-    MercadoPago\SDK::setAccessToken($_ENV['MP_ACCESS_TOKEN']);
+    $result = PaymentMethod::pix();
 
-    $payment = new MercadoPago\Payment();
-    
-    $payment->transaction_amount = 100;
-    $payment->description = "Título do produto";
-    $payment->payment_method_id = "pix";
-    $payment->payer = array(
-        "email" => "test@test.com",
-        "first_name" => "Test",
-        "last_name" => "User",
-        "identification" => array(
-            "type" => "CPF",
-            "number" => "19119119100"
-          ),
-        "address"=>  array(
-            "zip_code" => "06233200",
-            "street_name" => "Av. das Nações Unidas",
-            "street_number" => "3003",
-            "neighborhood" => "Bonfim",
-            "city" => "Osasco",
-            "federal_unit" => "SP"
-          )
-      );
-
-    $payment->save();
-
-    $result = $payment->point_of_interaction;
-
-    $response->getBody()->write(json_encode($result));
+    $response->getBody()->write($result);
 
     return $response->withHeader('content-type', 'application/json');
 

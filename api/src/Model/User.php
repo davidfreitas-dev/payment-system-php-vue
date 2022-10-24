@@ -7,8 +7,6 @@ use App\Mail\Mailer;
 use App\Response;
 use PDO;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 class User {
 
 	public static function get($iduser)
