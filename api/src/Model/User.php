@@ -214,7 +214,7 @@ class User {
 
 			if (count($results) === 0) {
 
-				return Response::handleResponse("error", "Email não encontrado.");
+				return Response::handleResponse("error", "E-mail não encontrado.");
 
 			} else {
 
@@ -246,7 +246,7 @@ class User {
 
 					$mailer->send();
 
-					return Response::handleResponse("success", "Email de recuperação enviado com sucesso!");
+					return Response::handleResponse("success", "E-mail de recuperação enviado com sucesso!");
 
 				}
 
