@@ -1,5 +1,7 @@
 <script setup>
-  const props = defineProps(['size'])
+    const props = defineProps({ 
+        size: { type: String, default: '10' } 
+    })
 </script>
 
 <template>

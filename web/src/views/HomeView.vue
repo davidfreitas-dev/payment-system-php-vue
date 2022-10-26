@@ -47,7 +47,7 @@
           >
 
           <div class="actions flex flex-col gap-2">
-              <button @click="$router.push('/payment/pix')">Pagar com Pix</button>
+              <button @click="$router.push('/payment/pix')">Continuar</button>
               <button @click="toggleModal">
                   Sair
               </button>
