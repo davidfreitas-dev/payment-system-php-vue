@@ -12,14 +12,15 @@ SDK::setAccessToken($_ENV['MP_ACCESS_TOKEN']);
 
 class PaymentMethod {
         
-    public static function pix()
+    public static function pix($paymentData)
     {
+
         try {
 
             $payment = new Payment();
           
-            $payment->transaction_amount = 100;
-            $payment->description = "Título do produto";
+            $payment->transaction_amount = $paymentData['price'];
+            $payment->description = $paymentData['description'];
             $payment->payment_method_id = "pix";
             $payment->payer = array(
                 "email" => "test@test.com",
@@ -37,17 +38,22 @@ class PaymentMethod {
                     "city" => "Osasco",
                     "federal_unit" => "SP"
                   )
-              );
-      
-              $payment->save();
+            );
+    
+            if (!$payment->save()) {
+
+              return Response::handleResponse("error", "Falha ao gerar o QR Code PIX");
+
+            }
           
-              return Response::handleResponse($payment->status, $payment->point_of_interaction);
+            return Response::handleResponse($payment->status, $payment->point_of_interaction);
     
         } catch (PDOException $e) {
           
-              return Response::handleResponse("error", "Falha ao gerar QR code PIX: " . $e->getMessage());
+            return Response::handleResponse("error", "Falha ao criar a transação: " . $e->getMessage());
           
         }
+
     }
 
 }

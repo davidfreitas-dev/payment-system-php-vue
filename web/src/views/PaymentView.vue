@@ -1,5 +1,5 @@
 <script setup>
-    import { ref, inject, onMounted } from 'vue'
+    import { ref, reactive, inject, onMounted } from 'vue'
     import { useRouter } from 'vue-router'
     import { useSessionStore } from '@/stores/session'
     import InputForm from '@/components/form/InputForm.vue'
@@ -12,9 +12,9 @@
 
     const isLoading = ref(false)
 
-    const product = ref({
+    const product = reactive({
         description: '',
-        price: ''
+        price: null
     })
 
     const verifySession = () => {
@@ -28,8 +28,10 @@
     const handlePay = () => {
         isLoading.value = true
 
+        product.price = parseFloat(product.price)
+
         axios
-            .post('/payment/pix')
+            .post('/payment/pix', product)
             .then((response) => {
                 data.value = response.data.data.transaction_data
             })
@@ -64,7 +66,7 @@
 
               <InputForm 
                 v-model="product.price" 
-                :type="'text'" 
+                :type="'number'" 
                 :label="'Valor do Produto'"
                 :placeholder="'100,00'"
               />
@@ -77,16 +79,16 @@
 
             <div class="image flex flex-col justify-center w-1/3">
               <img
-                class="m-auto w-2/4"
-                alt=""
+                class="mx-auto w-2/4"
+                alt="Logo PIX"
                 src="../assets/img/pix-logo.png"
               />
 
-              <span class="m-auto text-5xl">+</span>
+              <span class="mx-auto text-5xl">+</span>
 
               <img
-                class="m-auto w-2/5"
-                alt=""
+                class="mx-auto w-2/5"
+                alt="Logo Mercado Pago"
                 src="../assets/img/mercado-pago-logo.png"
               />
             </div>
