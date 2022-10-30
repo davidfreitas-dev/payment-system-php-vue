@@ -17,6 +17,12 @@ const pinia = createPinia()
 
 const app = createApp(App)
 
+app.config.globalProperties.$filters = {
+  formatDate(value) {
+    return 'Filtro de formatacao de data pendente'
+  }
+}
+
 app.use(pinia)
 app.use(router)
 
