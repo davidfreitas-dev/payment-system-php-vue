@@ -4,7 +4,8 @@ import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import ForgotView from '../views/ForgotView.vue'
 import ResetView from '../views/ResetView.vue'
-import PaymentView from '../views/PaymentView.vue'
+import CheckoutView from '../views/CheckoutView.vue'
+import PaymentsView from '../views/PaymentsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,9 +36,14 @@ const router = createRouter({
       component: ResetView
     },
     {
-      path: '/payment/pix',
-      name: 'pix',
-      component: PaymentView
+      path: '/checkout',
+      name: 'checkout',
+      component: CheckoutView
+    },
+    {
+      path: '/payments',
+      name: 'payments',
+      component: PaymentsView
     }
   ]
 })

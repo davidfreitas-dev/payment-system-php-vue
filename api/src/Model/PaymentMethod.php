@@ -29,7 +29,7 @@ class PaymentMethod {
                 "identification" => array(
                     "type" => "CPF",
                     "number" => "19119119100"
-                  ),
+                ),
                 "address"=>  array(
                     "zip_code" => "06233200",
                     "street_name" => "Av. das Nações Unidas",
@@ -37,12 +37,12 @@ class PaymentMethod {
                     "neighborhood" => "Bonfim",
                     "city" => "Osasco",
                     "federal_unit" => "SP"
-                  )
+                )
             );
     
             if (!$payment->save()) {
 
-              return Response::handleResponse("error", "Falha ao gerar o QR Code PIX");
+                return Response::handleResponse("error", "Falha ao gerar o QR Code PIX");
 
             }
           
@@ -54,6 +54,51 @@ class PaymentMethod {
           
         }
 
+    }
+
+    public static function getPayments()
+    {
+
+        $results = [];
+
+        try {
+          
+            $payment = new Payment();
+
+            $payments = $payment->search([
+                'sort' => 'date_created',
+                'criteria' => 'desc'
+            ])->getIterator();
+
+            foreach ($payments as $key => $value) {
+
+                $paymentDetails = array(
+                    "id"  => $value->id,
+                    "status"  => $value->status,
+                    "description" => $value->description,
+                    "transaction_amount" => $value->transaction_amount,
+                    "payment_method_id" => $value->payment_method_id,
+                    "date_created" => $value->date_created
+                );
+
+                $results[] = $paymentDetails;
+
+            }
+            
+            if (count($results) === 0) {
+
+              return Response::handleResponse("error", "Nenhum pagamento encontrado");
+
+            }
+
+            return Response::handleResponse("success", $results);
+
+        } catch (PDOException $e) {
+          
+            return Response::handleResponse("error", "Falha ao obter a lista de pagamentos: " . $e->getMessage());
+
+        }
+        
     }
 
 }

@@ -15,3 +15,13 @@ $app->post('/payment/pix', function (Request $request, Response $response, array
   return $response->withHeader('content-type', 'application/json');
 
 });
+
+$app->get('/payments', function (Request $request, Response $response, array $args) {
+ 
+  $result = PaymentMethod::getPayments();
+
+  $response->getBody()->write($result);
+
+  return $response->withHeader('content-type', 'application/json');
+
+});

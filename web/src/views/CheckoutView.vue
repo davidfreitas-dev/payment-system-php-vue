@@ -50,8 +50,14 @@
 
 <template>
     <main>
-        <div class="header bg-brand text-white text-xl font-medium rounded-t-md py-3 px-5 mt-7 mx-auto w-4/5">
-          Pagamento com PIX
+        <div class="header flex flex-row justify-between items-center bg-brand rounded-t-md py-3 px-5 mt-7 mx-auto w-4/5">
+          <span class="text-white text-xl font-medium">
+            Pagamento com PIX
+          </span>
+          
+          <button @click="$router.push('/payments')" class="text-white hover:underline">
+            Consultar Pagamentos
+          </button>
         </div>
 
         <div class="container mx-auto border-x-2 border-b-2 rounded-b-md py-5 px-3 w-4/5">
