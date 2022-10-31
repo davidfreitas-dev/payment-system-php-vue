@@ -6,6 +6,7 @@ import ForgotView from '../views/ForgotView.vue'
 import ResetView from '../views/ResetView.vue'
 import CheckoutView from '../views/CheckoutView.vue'
 import PaymentsView from '../views/PaymentsView.vue'
+import PaymentDetailsView from '../views/PaymentDetailsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,6 +45,11 @@ const router = createRouter({
       path: '/payments',
       name: 'payments',
       component: PaymentsView
+    },
+    {
+      path: '/payments/:id',
+      name: 'payment-details',
+      component: PaymentDetailsView
     }
   ]
 })

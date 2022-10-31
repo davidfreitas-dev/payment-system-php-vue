@@ -25,3 +25,15 @@ $app->get('/payments', function (Request $request, Response $response, array $ar
   return $response->withHeader('content-type', 'application/json');
 
 });
+
+$app->get('/payments/{id}', function (Request $request, Response $response, array $args) {
+
+  $id = $request->getAttribute('id');
+ 
+  $result = PaymentMethod::get($id);
+
+  $response->getBody()->write($result);
+
+  return $response->withHeader('content-type', 'application/json');
+
+});

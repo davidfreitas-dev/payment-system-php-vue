@@ -74,7 +74,7 @@
                         {{ payment.status }}
                     </td>
                     <td class="py-4 px-6">
-                        <a href="#" class="font-medium text-brand hover:underline">Edit</a>
+                        <router-link :to="`/payments/${payment.id}`" class="font-medium text-brand hover:underline">Edit</router-link>
                     </td>
                 </tr>
             </tbody>

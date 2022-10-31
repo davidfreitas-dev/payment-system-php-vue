@@ -101,4 +101,38 @@ class PaymentMethod {
         
     }
 
+    public static function get($id)
+    {
+
+        try {
+          
+            $payment = new Payment();
+
+            $paymentDetails = $payment->get($id);            
+            
+            if (!$paymentDetails) {                
+
+                return Response::handleResponse("error", "Pagamento não encontrado");
+
+            }
+
+            $details = array(
+                "id"  => $paymentDetails->id,
+                "status"  => $paymentDetails->status,
+                "description" => $paymentDetails->description,
+                "transaction_amount" => $paymentDetails->transaction_amount,
+                "payment_method_id" => $paymentDetails->payment_method_id,
+                "date_created" => $paymentDetails->date_created
+            );
+
+            return Response::handleResponse("success", $details);
+
+        } catch (PDOException $e) {
+          
+            return Response::handleResponse("error", "Falha ao obter detalhes do pagamento: " . $e->getMessage());
+
+        }
+        
+    }
+
 }
