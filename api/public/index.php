@@ -37,7 +37,7 @@ $app->add(new Tuupola\Middleware\JwtAuthentication([
     }
 ]));
 
-require_once('users.php');
-require_once('payment-methods.php');
+require_once('user.php');
+require_once('payment.php');
 
 $app->run();

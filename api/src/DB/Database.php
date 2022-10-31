@@ -20,7 +20,7 @@ class Database {
 
 	}
 
-    private function setParams($statement, $parameters = array())
+  private function setParams($statement, $parameters = array())
 	{
 
 		foreach ($parameters as $key => $value) {

@@ -56,7 +56,7 @@ class PaymentMethod {
 
     }
 
-    public static function getPayments()
+    public static function getAll()
     {
 
         $results = [];

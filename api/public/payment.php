@@ -18,7 +18,7 @@ $app->post('/payment/pix', function (Request $request, Response $response, array
 
 $app->get('/payments', function (Request $request, Response $response, array $args) {
  
-  $result = PaymentMethod::getPayments();
+  $result = PaymentMethod::getAll();
 
   $response->getBody()->write($result);
 
