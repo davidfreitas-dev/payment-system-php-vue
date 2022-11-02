@@ -28,8 +28,6 @@
     const handlePay = () => {
         isLoading.value = true
 
-        product.price = parseFloat(product.price)
-
         axios
             .post('/payment/pix', product)
             .then((response) => {

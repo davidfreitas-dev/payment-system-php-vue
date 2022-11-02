@@ -1,6 +1,7 @@
 <script setup>
     const props = defineProps({ 
-        size: { type: String, default: '10' } 
+        size: { type: String, default: '10' }, 
+        text: { type: Boolean, default: false}
     })
 </script>
 
@@ -22,8 +23,8 @@
                 fill="currentFill"
             />
         </svg>
-        <span class="sr-only">
-            Loading...
+        <span :class="{ 'sr-only': !text }">
+              Aguarde...
         </span>
     </div>
 </template>

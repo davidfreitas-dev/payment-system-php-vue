@@ -2,6 +2,7 @@
   import { ref, onMounted, inject } from 'vue'
   import { useRouter } from 'vue-router'
   import { useSessionStore } from '@/stores/session'
+  import SpinnerLoader from '@/components/SpinnerLoader.vue';
   
   const router = useRouter()
   const storeSession = useSessionStore()
@@ -15,9 +16,13 @@
     router.push('/login')
   }
 
+  const isLoading = ref(false)
+
   const payments = ref([])
 
   const getPayments = () => {
+    isLoading.value = true
+
     axios
       .get('/payments')
       .then((response) => {
@@ -28,6 +33,9 @@
       .catch((err) => {
         console.log(err)
       })
+      .finally(() => {
+        isLoading.value = false
+      });
   }
 
   onMounted(() => {
@@ -74,15 +82,20 @@
                         {{ payment.status }}
                     </td>
                     <td class="py-4 px-6">
-                        <router-link :to="`/payments/${payment.id}`" class="font-medium text-brand hover:underline">Edit</router-link>
+                        <router-link :to="`/payments/${payment.id}`" class="font-medium text-brand hover:underline">Ver Detalhes</router-link>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <div v-else class="text-center text-2xl font-medium mt-7">
-      <span>Nenhum pedido encontrado</span>
+    <div v-else class="text-center text-2xl font-medium mt-20">
+      <SpinnerLoader
+        v-if="isLoading"
+        :text="true"
+      />
+
+      <span v-else>Nenhum pedido encontrado</span>
     </div>
   </div>
 </template>
