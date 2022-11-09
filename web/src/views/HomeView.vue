@@ -1,20 +1,39 @@
 <script setup>
-    import { onMounted } from 'vue'
-    import { useRouter } from 'vue-router'
-    import { useSessionStore } from '@/stores/session'
+  import { ref, inject, onMounted } from 'vue'
+  import { useRouter } from 'vue-router'
+  import { useSessionStore } from '@/stores/session'
 
-    const router = useRouter()
-    const storeSession = useSessionStore()
+  const axios = inject('axios')
+  const router = useRouter()
+  const storeSession = useSessionStore()
 
-    const verifySession = () => {
-        if (!storeSession.session.hasOwnProperty('token')) {
-            router.push('/login')
-        }        
+  const products = ref([])
+
+  const getProducts = () => {    
+    axios
+      .get(`/products`)
+      .then((response) => {
+        if (response.data.status === 'success') {
+          products.value = response.data.data
+          console.log(products.value)
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  const verifySession = () => {
+    if (!storeSession.session.hasOwnProperty('token')) {
+      return router.push('/login')
     }
+    
+    getProducts()
+  }
 
-    onMounted(() => {
-        verifySession()
-    })
+  onMounted(() => {
+    verifySession()
+  })
 </script>
 
 <template>
