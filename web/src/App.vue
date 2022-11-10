@@ -27,7 +27,6 @@
   onMounted(() => {
     getSession()
     storeSession.setSession(session.value)
-    verifySession()
   })
 
   const isView = computed(() => {

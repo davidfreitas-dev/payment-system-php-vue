@@ -89,12 +89,7 @@
     <section>
         <ImageForm />
 
-        <div class="container">
-            <span class="header">
-                Já possui uma conta?
-                <button type="button" @click="router.push('/login')">Sign In</button>
-            </span>
-            
+        <div class="container">            
             <div v-if="isValid" class="form">
                 <HeadingForm :text="'Recuperação de Conta'" />
 
@@ -118,6 +113,16 @@
             <span v-else class="msg">
                 <h1>Invalid Token :(</h1>
             </span>
+            
+            <div class="footer">
+                Já possui uma conta?
+                <router-link
+                    class="text-brand ml-1"
+                    to="/login"
+                >
+                    Entrar
+                </router-link>
+            </div>
         </div>
     </section>
 
@@ -131,17 +136,14 @@ section {
 .container {
     @apply flex flex-col h-screen max-w-none w-full md:w-2/5 lg:p-10 
 }
-.header {
-    @apply self-center lg:self-end mt-10 lg:mt-0 px-2 text-dark-gray
-}
-.header button {
-    @apply border border-solid rounded-full uppercase font-medium text-sm hover:bg-dark-gray hover:text-light transition-all ease-linear duration-100 px-6 py-1 ml-2
-}
 .form {
-    @apply my-auto px-7 md:px-10
+    @apply px-7 mt-12 md:px-10
 }
 .form div {
     @apply my-5
+}
+.footer {
+    @apply flex flex-row justify-center mb-7 mt-auto lg:mb-0 text-dark-gray
 }
 .msg {
     @apply my-auto font-bold text-center text-4xl text-dark
