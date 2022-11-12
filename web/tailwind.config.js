@@ -19,5 +19,7 @@ module.exports = {
       success: '#00E4A1',
     }
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp')
+  ],
 }

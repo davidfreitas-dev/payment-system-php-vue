@@ -13,29 +13,29 @@ class Auth {
 
         $sql = "SELECT * FROM tb_users a INNER JOIN tb_persons b ON a.idperson = b.idperson WHERE a.deslogin = :LOGIN OR b.desemail = :LOGIN";
 
-		$db = new Database();
+        $db = new Database();
 
-		$result = $db->select($sql, array(
-			":LOGIN"=>$login
-		)); 
+        $result = $db->select($sql, array(
+            ":LOGIN"=>$login
+        )); 
 
-		if (count($result) === 0) {
+        if (count($result) === 0) {
 
-			return Response::handleResponse("error", "Usuário inexistente ou senha inválida.");
+            return Response::handleResponse("error", "Usuário inexistente ou senha inválida.");
 
-		}
+        }
 
-		$data = $result[0];
+        $data = $result[0];
 
-		if (password_verify($password, $data['despassword'])) {
+        if (password_verify($password, $data['despassword'])) {
 
-			return Auth::generateToken($data);
+            return Auth::generateToken($data);
 
-		} else {
+        } else {
 
-			return Response::handleResponse("error", "Usuário inexistente ou senha inválida.");
+            return Response::handleResponse("error", "Usuário inexistente ou senha inválida.");
 
-		}
+        }
 
     }
 
