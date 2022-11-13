@@ -39,7 +39,7 @@
 </script>
 
 <template>
-    <h1 class="text-center text-4xl font-bold pt-8">
+    <h1 class="title">
       Nossos Produtos
     </h1>
 
@@ -51,6 +51,9 @@
 </template>
 
 <style scoped>
+.title {
+  @apply text-center text-4xl font-bold pt-8
+}
 .container {
   @apply flex items-start flex-wrap mx-auto py-5 mb-10 w-[95%] lg:w-4/5
 }
