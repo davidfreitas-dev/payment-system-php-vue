@@ -39,8 +39,12 @@
 </script>
 
 <template>
+    <h1 class="text-center text-4xl font-bold pt-8">
+      Nossos Produtos
+    </h1>
+
     <div class="container">
-      <div v-for="product in products" class="p-1.5 w-[50%] sm:w-[33%] lg:w-[25%]">
+      <div v-for="product in products" class="p-2 w-[50%] sm:w-[33%] lg:w-[25%]">
         <ProductCard :product="product" />
       </div>
     </div>
@@ -48,6 +52,6 @@
 
 <style scoped>
 .container {
-  @apply flex items-start flex-wrap mx-auto py-5 w-[95%] lg:w-4/5
+  @apply flex items-start flex-wrap mx-auto py-5 mb-10 w-[95%] lg:w-4/5
 }
 </style>

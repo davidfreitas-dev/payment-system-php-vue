@@ -18,8 +18,8 @@ const pinia = createPinia()
 const app = createApp(App)
 
 app.config.globalProperties.$filters = {
-  formatDate(value) {
-    return 'Filtro de formatacao de data pendente'
+  currencyBRL(value) {
+    return parseFloat(value).toLocaleString('pt-br',{ style: 'currency', currency: 'BRL' });
   }
 }
 

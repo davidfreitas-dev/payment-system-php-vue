@@ -12,14 +12,14 @@
               :src="`src/assets/img/products/${product.idproduct}.png`"
             >
         </a>
-        <div class="p-3 md:p-5">
+        <div class="p-5">
             <a href="#">
-                <h5 class="mb-2 text-sm md:text-lg font-bold tracking-tight text-gray-900 line-clamp-2">
-                  {{ product.desproduct }}
+                <h5 class="text-2xl font-bold tracking-tight text-gray-900">
+                  {{ $filters.currencyBRL(product.vlprice) }}
                 </h5>
             </a>
-            <p class="mb-3 font-normal text-gray-700">
-              <!-- Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order. -->
+            <p class="mb-3 font-medium text-gray-700 line-clamp-2">
+              {{ product.desproduct }}
             </p>
             <a href="#" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-brand rounded-lg hover:bg-brand focus:ring-4 focus:outline-none focus:ring-blue-300">
                 Comprar
