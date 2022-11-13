@@ -443,8 +443,8 @@ INSERT INTO `tb_products` (`idproduct`, `desproduct`, `desdescription`, `vlprice
 (2, 'Processador Intel Core i5-10400F', 'Processador de ultima geração intel', '1089.90', '15.00', '15.00', '15.00', '0.27', 100, 1, 'prcessador-intel-i5', '2017-03-13 06:00:00'),
 (3, 'PC Gamer Concórdia Intel Core i3-9100F, RX 550, 8GB DDR4, HD 1TB', 'PC gamer parrudão', '2790.90', '15.00', '15.00', '15.00', '0.27', 100, 1, 'pc-gamer', '2017-03-13 06:00:00'),
 (4, 'SSD Kross Elegance 120GB, NVME, M.2, Leitura 550MB/s e Gravação ', 'SSD Super rápido', '150.90', '15.00', '15.00', '15.00', '0.27', 100, 1, 'SSD-nvme-m2', '2017-03-13 06:00:00'),
-(5, 'Kit Gamer', 'Kit gamer com vários RGB', '247.90', '15.00', '15.00', '15.00', '0.27', 100, 1, 'kit-mouse-teclado-gamer', '2017-03-13 06:00:00'),
-(6, 'Placa Mãe', 'Placa Mãe', '889.90', '15.00', '15.00', '15.00', '0.27', 100, 1, 'Placa-Mae-Asus', '2017-03-13 06:00:00'),
+(5, 'Kit Gamer - Mouse, Teclado, Headphone, Mousepad', 'Kit gamer com vários RGB', '247.90', '15.00', '15.00', '15.00', '0.27', 100, 1, 'kit-mouse-teclado-gamer', '2017-03-13 06:00:00'),
+(6, 'Placa Mãe Asus H-310M-D R2.0', 'Placa Mãe', '889.90', '15.00', '15.00', '15.00', '0.27', 100, 1, 'Placa-Mae-Asus', '2017-03-13 06:00:00'),
 (7, 'Memória Kingston Fury Beast, 8GB, 2666MHz, DDR4', 'Memoria zica', '12.00', '1.10', '1.10', '1.10', '1.10', 35, 1, 'memoria-kingston-fury-beast', '2021-08-19 13:46:27');
 
 -- --------------------------------------------------------

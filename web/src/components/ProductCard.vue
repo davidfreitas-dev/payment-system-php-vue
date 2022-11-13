@@ -4,7 +4,7 @@
 </script>
 
 <template>
-    <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md">
+    <div class="bg-white border-gray-200 rounded-lg border shadow-md">
         <a href="#">
             <img
               class="rounded-t-lg"
@@ -12,9 +12,9 @@
               :src="`src/assets/img/products/${product.idproduct}.png`"
             >
         </a>
-        <div class="p-5">
+        <div class="p-3 md:p-5">
             <a href="#">
-                <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900 line-clamp-2">
+                <h5 class="mb-2 text-sm md:text-lg font-bold tracking-tight text-gray-900 line-clamp-2">
                   {{ product.desproduct }}
                 </h5>
             </a>

@@ -3,8 +3,8 @@
 </script>
 
 <template>
-  <nav class="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-20 bg-white shadow sm:items-baseline w-full">
-    <div class="mb-2 sm:mb-0">
+  <nav class="flex flex-row justify-between items-center font-sans text-center py-4 px-5 sm:px-10 md:px-20 bg-white shadow sm:items-baseline w-full">
+    <div>
       <a href="#" class="text-2xl font-medium no-underline text-grey-darkest hover:text-brand">Logo</a>
     </div>
     <div>

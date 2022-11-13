@@ -40,7 +40,7 @@
 
 <template>
     <div class="container">
-      <div v-for="product in products" class="p-3 w-[25%]">
+      <div v-for="product in products" class="p-1.5 w-[50%] sm:w-[33%] lg:w-[25%]">
         <ProductCard :product="product" />
       </div>
     </div>
@@ -48,6 +48,6 @@
 
 <style scoped>
 .container {
-  @apply flex items-start flex-wrap mx-auto py-5
+  @apply flex items-start flex-wrap mx-auto py-5 w-[95%] lg:w-4/5
 }
 </style>
