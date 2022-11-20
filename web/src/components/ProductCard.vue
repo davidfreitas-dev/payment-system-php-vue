@@ -14,7 +14,7 @@
 </script>
 
 <template>
-    <div class="bg-white border-gray-200 rounded-lg border shadow-md">
+    <div class="bg-white border-gray-200 rounded-lg border shadow-lg lg:m-1.5">
         <a href="#">
             <img
               class="rounded-t-lg"
