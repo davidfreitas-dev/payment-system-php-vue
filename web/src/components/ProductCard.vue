@@ -31,7 +31,7 @@
             <p class="mb-3 font-medium text-gray-700 line-clamp-2">
               {{ product.desproduct }}
             </p>
-            <a @click="addItem" href="#" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-brand rounded-lg hover:bg-brand focus:ring-4 focus:outline-none focus:ring-blue-300">
+            <a @click="addItem" class="inline-flex items-center py-2 px-3 text-sm font-medium cursor-pointer text-center text-white bg-brand rounded-lg hover:bg-brand focus:ring-4 focus:outline-none focus:ring-blue-300">
                 Comprar
                 <svg
                   class="ml-2 -mr-1 w-4 h-4"

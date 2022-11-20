@@ -45,13 +45,13 @@
 </script>
 
 <template>
-  <div class="flex flex-col justify-between gap-6 w-1/3 rounded-lg px-7 py-5 bg-light">
+  <div class="flex flex-col justify-around gap-6 w-1/3 h-full rounded-lg px-7 py-5 bg-light">
     <h1 class="text-2xl font-bold">Pagamento</h1>
 
-    <div class="flex flex-col">
-      <label class="text-dark-gray mb-2">Método de Pagamento:</label>
+    <div class="flex flex-col my-2">
+      <label class="text-dark-gray mb-3">Método de Pagamento:</label>
 
-      <div class="flex items-center mb-2">
+      <div class="flex items-center mb-5">
         <input
           v-model="paymentMethod"
           class="w-5 h-5 text-brand bg-gray-100 border-gray-300 focus:ring-brand"
@@ -74,7 +74,7 @@
       </div>
     </div>
 
-    <div class="flex flex-col">
+    <div class="flex flex-col my-2">
       <label class="text-dark-gray mb-2">Nome no Cartão:</label>
       <input
         v-model="creditCardData.name"
@@ -83,7 +83,7 @@
         type="text"
       >
 
-      <label class="text-dark-gray mb-2">Número do Cartão:</label>
+      <label class="text-dark-gray mb-2 mt-5">Número do Cartão:</label>
       <input
         v-model="creditCardData.number"
         class="block w-full rounded-md border border-solid focus:border-brand focus:outline-none transition ease-in-out py-2 px-3"
@@ -92,7 +92,7 @@
       >
     </div>
 
-    <div class="flex flex-row">
+    <div class="flex flex-row my-2">
       <div class="flex flex-col w-2/3">
         <label class="text-dark-gray mb-2">Validade:</label>
 
@@ -115,7 +115,7 @@
 
       <div class="flex flex-col w-1/3">
         <label class="text-dark-gray mb-2">CVV:</label>
-        <input v-model="creditCardData.cvv" type="text" placeholder="000" class="w-20 rounded-lg border border-solid focus:border-brand focus:outline-none transition ease-in-out py-2 px-3">
+        <input v-model="creditCardData.cvv" type="text" placeholder="000" class="w-full rounded-lg border border-solid focus:border-brand focus:outline-none transition ease-in-out py-2 px-3">
       </div>
     </div>
 
