@@ -1,6 +1,8 @@
 <script setup>
   import { ref, reactive, onMounted } from 'vue'
 
+  const emit = defineEmits(['onPay'])
+
   const paymentMethod = ref('')
 
   const creditCardData = reactive({
@@ -40,7 +42,7 @@
   })
 
   const handlePay = () => {
-    console.log('Método de pagamento: ', paymentMethod.value, 'Dados do Cartão: ', creditCardData)
+    emit('onPay', paymentMethod.value, creditCardData)
   }
 </script>
 

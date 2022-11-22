@@ -4,18 +4,17 @@ export const useCartStore = defineStore('cart', {
   state: () => {
     return { 
       cart: { 
-        items: [], 
-        total: 0.00 
+        items: []
       } 
     }
   },
   getters: {
-    cartTotal(state) {
-      const cartTotal = state.cart.items
+    total(state) {
+      const total = state.cart.items
         .map(item => item.qty * parseFloat(item.vlprice))
         .reduce((total, current) => total + current, 0)
 
-      return cartTotal
+      return total
     },
   },
   actions: {

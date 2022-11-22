@@ -76,7 +76,7 @@
           Continuar Comprando
         </a>
 
-        <span class="text-xl font-semibold">Total: {{ $filters.currencyBRL(storeCart.cartTotal) }}</span>
+        <span class="text-xl font-semibold">Total: {{ $filters.currencyBRL(storeCart.total) }}</span>
       </div>
     </div>
   </div>
