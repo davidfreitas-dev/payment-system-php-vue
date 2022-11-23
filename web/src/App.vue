@@ -1,10 +1,10 @@
 <script setup>
-  import { ref, computed, onMounted } from 'vue';
+  import { ref, computed, onMounted } from 'vue'
   import { RouterView } from 'vue-router' 
   import { useRouter } from 'vue-router'
   import { useSessionStore } from '@/stores/session'
-  import NavBar from '@/components/NavBar.vue';
-  import LogoutModal from '@/components/LogoutModal.vue';
+  import NavgationBar from '@/components/template/NavgationBar.vue'
+  import LogoutModal from '@/components/template/LogoutModal.vue'
 
   const session = ref({})
 
@@ -50,7 +50,7 @@
 </script>
 
 <template>
-  <NavBar v-if="isView" @handleLogout="toggleModal" />
+  <NavgationBar v-if="isView" @handleLogout="toggleModal" />
   <RouterView />
   <LogoutModal ref="modal" @onModal="logout" />
 </template>

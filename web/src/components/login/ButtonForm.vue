@@ -1,5 +1,5 @@
 <script setup>
-    import SpinnerLoader from '../SpinnerLoader.vue'
+    import SpinnerLoader from '@/components/template/SpinnerLoader.vue'
 
     const props = defineProps(['text', 'isLoading'])
 </script>

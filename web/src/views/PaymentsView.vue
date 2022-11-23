@@ -2,7 +2,7 @@
   import { ref, onMounted, inject } from 'vue'
   import { useRouter } from 'vue-router'
   import { useSessionStore } from '@/stores/session'
-  import SpinnerLoader from '@/components/SpinnerLoader.vue';
+  import SpinnerLoader from '@/components/template/SpinnerLoader.vue';
   
   const router = useRouter()
   const storeSession = useSessionStore()

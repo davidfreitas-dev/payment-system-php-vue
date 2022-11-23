@@ -3,7 +3,7 @@
   import { useRouter } from 'vue-router'
   import { useSessionStore } from '@/stores/session'
 
-  import ProductCard from '@/components/ProductCard.vue';
+  import ProductCard from '@/components/product/ProductCard.vue';
 
   const axios = inject('axios')
   const router = useRouter()

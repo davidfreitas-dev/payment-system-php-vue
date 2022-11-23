@@ -4,8 +4,8 @@
     import { useSessionStore } from '@/stores/session'
     import { useCartStore } from '@/stores/cart'
 
-    import CartList from '@/components/CartList.vue'
-    import PaymentForm from '@/components/PaymentForm.vue'
+    import CartList from '@/components/checkout/CartList.vue'
+    import PaymentForm from '@/components/checkout/PaymentForm.vue'
 
     const router = useRouter()
     const axios = inject('axios')
