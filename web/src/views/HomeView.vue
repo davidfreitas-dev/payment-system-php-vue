@@ -17,7 +17,6 @@
       .then((response) => {
         if (response.data.status === 'success') {
           products.value = response.data.data
-          console.log(products.value)
         }
       })
       .catch((err) => {

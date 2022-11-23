@@ -21,7 +21,7 @@ class PaymentMethod {
           
             $payment->transaction_amount = (float)$paymentData['price'];
             $payment->description = $paymentData['description'];
-            $payment->payment_method_id = "pix";
+            $payment->payment_method_id = $paymentData['paymentMethod'];
             $payment->payer = array(
                 "email" => "test@test.com",
                 "first_name" => "Test",

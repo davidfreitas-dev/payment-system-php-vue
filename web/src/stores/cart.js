@@ -3,14 +3,12 @@ import { defineStore } from 'pinia'
 export const useCartStore = defineStore('cart', {
   state: () => {
     return { 
-      cart: { 
-        items: []
-      } 
+      items: []
     }
   },
   getters: {
     total(state) {
-      const total = state.cart.items
+      const total = state.items
         .map(item => item.qty * parseFloat(item.vlprice))
         .reduce((total, current) => total + current, 0)
 
@@ -20,11 +18,11 @@ export const useCartStore = defineStore('cart', {
   actions: {
     addItem(item) {
       item.qty = 1
-      this.cart.items.push(item)
+      this.items.push(item)
     },
     removeItem(item) {
-      const index = this.cart.items.indexOf(item)
-      this.cart.items.splice(index, 1)
+      const index = this.items.indexOf(item)
+      this.items.splice(index, 1)
     },
   },
 })
