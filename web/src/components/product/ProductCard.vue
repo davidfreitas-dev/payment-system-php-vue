@@ -14,7 +14,7 @@
 </script>
 
 <template>
-    <div class="bg-white border-gray-200 rounded-lg border shadow-lg lg:m-1.5">
+    <div class="bg-white border-gray-200 rounded-lg border shadow-md sm:shadow-lg lg:m-1.5">
         <a href="#">
             <img
               class="rounded-t-lg"
@@ -22,9 +22,9 @@
               :src="`src/assets/img/products/${product.idproduct}.png`"
             >
         </a>
-        <div class="p-5">
+        <div class="p-4">
             <a href="#">
-                <h5 class="text-2xl font-bold tracking-tight text-gray-900">
+                <h5 class="text-xl sm:text-2xl font-bold tracking-tight text-gray-900">
                   {{ $filters.currencyBRL(product.vlprice) }}
                 </h5>
             </a>

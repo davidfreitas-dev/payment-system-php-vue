@@ -43,7 +43,7 @@
     </h1>
 
     <div class="container">
-      <div v-for="product in products" class="p-2 w-[50%] sm:w-[33%] lg:w-[25%]">
+      <div v-for="product in products" class="p-1.5 sm:p-2 w-[50%] sm:w-[33%] lg:w-[25%]">
         <ProductCard :product="product" />
       </div>
     </div>
@@ -51,7 +51,7 @@
 
 <style scoped>
 .title {
-  @apply text-center text-4xl font-bold pt-8
+  @apply text-center text-2xl sm:text-3xl md:text-4xl font-bold pt-5 sm:pt-8
 }
 .container {
   @apply flex items-start flex-wrap mx-auto py-5 mb-10 w-[95%] lg:w-4/5
