@@ -1,13 +1,13 @@
 <script setup>
-    import SpinnerLoader from '@/components/template/SpinnerLoader.vue'
+    import DotsLoader from '@/components/template/DotsLoader.vue'
 
     const props = defineProps(['text', 'isLoading'])
 </script>
 
 <template>
     <button @click="$emit('onClickButton')" type="button">
-        <SpinnerLoader v-if="isLoading" :size="'5'" />
-        {{ text }}
+        <DotsLoader v-if="isLoading" />
+        <span v-else>{{ text }}</span>
     </button>
 </template>
 
