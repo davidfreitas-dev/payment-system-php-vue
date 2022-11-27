@@ -47,7 +47,7 @@
 </script>
 
 <template>
-  <div class="flex flex-col justify-around gap-6 w-1/3 h-full rounded-lg px-7 py-5 bg-light">
+  <div class="flex flex-col justify-around gap-6 mx-4 md:mx-0 lg:w-1/3 h-full rounded-lg px-7 py-5 bg-light">
     <h1 class="text-2xl font-bold">Pagamento</h1>
 
     <div class="flex flex-col my-2">
@@ -98,7 +98,7 @@
       <div class="flex flex-col w-2/3">
         <label class="text-dark-gray mb-2">Validade:</label>
 
-        <div class="flex flex-row">
+        <div class="flex flex-row h-10">
           <select
             v-model="creditCardData.expMonth"
             class="text-gray-900 text-sm rounded-lg block w-5/12 border border-solid focus:border-brand focus:outline-none transition ease-in-out p-2.5 mr-3"

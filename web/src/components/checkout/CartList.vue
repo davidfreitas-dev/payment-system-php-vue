@@ -15,11 +15,11 @@
 </script>
 
 <template>
-  <div class="w-2/3">
-    <div class="w-full bg-white px-10 py-10">
+  <div class="w-full lg:w-2/3">
+    <div class="w-full bg-white px-4 pb-7 lg:p-10">
       <div class="flex justify-between border-b pb-8"> <!-- header -->
-        <h1 class="font-semibold text-2xl">Carrinho</h1>
-        <h2 class="font-semibold text-2xl">{{ storeCart.items.length }} Itens</h2>
+        <h1 class="font-semibold text-xl sm:text-2xl">Carrinho</h1>
+        <h2 class="font-semibold text-xl sm:text-2xl">{{ storeCart.items.length }} Itens</h2>
       </div>
 
       <div class="flex mt-10 mb-5"> <!-- table header -->
@@ -32,7 +32,7 @@
       <div v-for="item in storeCart.items" class="flex items-center hover:bg-gray-100 -mx-3 px-3 py-5"> <!-- table content -->
         <div class="flex w-2/5"> <!-- product -->
           <div class="w-56"> <!-- image -->
-            <img class="h-24" :src="`src/assets/img/products/${item.idproduct}.png`" alt="Imagem do Produto">
+            <img class="h-24 rounded-md" :src="`src/assets/img/products/${item.idproduct}.png`" alt="Imagem do Produto">
           </div>
           
           <div class="flex flex-col justify-between w-full"> <!-- deails -->

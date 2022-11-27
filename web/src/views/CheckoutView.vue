@@ -42,7 +42,7 @@
 
 <template>
   <main>
-    <div class="flex flex-row w-5/6 mx-auto py-7">
+    <div class="flex flex-col lg:flex-row w-full md:w-5/6 mx-auto py-7">
       <CartList />
         
       <PaymentForm @onPay="handlePayment"/>
