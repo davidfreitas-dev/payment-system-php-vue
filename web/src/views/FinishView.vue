@@ -2,6 +2,7 @@
   import { ref, inject, onMounted } from 'vue'
   import { useSessionStore } from '@/stores/session'
   import { usePaymentStore } from '@/stores/payment'
+  import SpinnerLoader from '@/components/template/SpinnerLoader.vue';
 
   const axios = inject('axios')
   const storeSession = useSessionStore()
@@ -42,4 +43,6 @@
 
 <template>
   <h1>Status do Pagamento</h1>
+
+  <SpinnerLoader v-if="isLoading" />
 </template>
