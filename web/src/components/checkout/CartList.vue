@@ -17,12 +17,12 @@
 <template>
   <div class="w-full lg:w-2/3">
     <div class="w-full bg-white px-4 pb-7 lg:p-10">
-      <div class="flex justify-between border-b pb-8"> <!-- header -->
+      <div class="flex justify-between border-b pb-5"> <!-- header -->
         <h1 class="font-semibold text-xl sm:text-2xl">Carrinho</h1>
         <h2 class="font-semibold text-xl sm:text-2xl">{{ storeCart.items.length }} Itens</h2>
       </div>
 
-      <div class="flex mt-10 mb-5"> <!-- table header -->
+      <div class="hidden sm:flex mt-10 mb-5"> <!-- table header -->
         <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Produto</h3>
         <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5">Quantidade</h3>
         <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5">Preço</h3>
@@ -30,19 +30,44 @@
       </div>
 
       <div v-for="item in storeCart.items" class="flex items-center hover:bg-gray-100 -mx-3 px-3 py-5"> <!-- table content -->
-        <div class="flex w-2/5"> <!-- product -->
+        <div class="flex w-full sm:w-2/5"> <!-- product -->
           <div class="w-56"> <!-- image -->
             <img class="h-24 rounded-md" :src="`src/assets/img/products/${item.idproduct}.png`" alt="Imagem do Produto">
           </div>
           
-          <div class="flex flex-col justify-between w-full"> <!-- deails -->
+          <div class="flex flex-col justify-between w-full -ml-7 sm:-ml-5"> <!-- deails -->
             <span class="font-bold text-sm line-clamp-3">{{ item.desproduct }}</span>
-            <!-- <span class="text-red-500 text-xs">Apple</span> -->
-            <a @click="removeItem(item)" class="font-semibold text-danger text-xs cursor-pointer">Remove</a>
+            <span class="sm:hidden font-bold text-sm text-brand">{{ $filters.currencyBRL(item.vlprice) }}</span> <!-- price -->
+            <span class="flex flex-row justify-between">
+              <a
+                @click="removeItem(item)"
+                class="font-semibold text-danger text-xs cursor-pointer"
+              >
+                Remove
+              </a>
+
+              <div class="flex justify-center sm:hidden"> <!-- control quantity -->
+                <svg
+                  class="fill-current text-gray-600 cursor-pointer w-3"
+                  viewBox="0 0 448 512"
+                >
+                  <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                </svg>
+
+                <input class="mx-2 text-center w-8 bg-transparent" type="text" value="1">
+
+                <svg
+                  class="fill-current text-gray-600 cursor-pointer w-3"
+                  viewBox="0 0 448 512"
+                >
+                  <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                </svg>
+              </div>
+            </span>
           </div>
         </div>
         
-        <div class="flex justify-center w-1/5"> <!-- control quantity -->
+        <div class="hidden sm:flex justify-center w-1/5"> <!-- control quantity -->
           <svg
             class="fill-current text-gray-600 cursor-pointer w-3"
             viewBox="0 0 448 512"
@@ -60,9 +85,9 @@
           </svg>
         </div>
 
-        <span class="text-center w-1/5 font-semibold text-sm">{{ $filters.currencyBRL(item.vlprice) }}</span> <!-- price -->
+        <span class="hidden sm:block text-center w-1/5 font-semibold text-sm">{{ $filters.currencyBRL(item.vlprice) }}</span> <!-- price -->
 
-        <span class="text-center w-1/5 font-semibold text-sm">{{ $filters.currencyBRL(getTotalItem(item)) }}</span> <!-- total -->
+        <span class="hidden sm:block text-center w-1/5 font-semibold text-sm">{{ $filters.currencyBRL(getTotalItem(item)) }}</span> <!-- total -->
       </div>
 
       <div class="flex flex-row justify-between items-center mt-10"> <!-- table footer -->
