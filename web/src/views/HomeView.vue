@@ -29,7 +29,9 @@
       return router.push('/login')
     }
     
-    getProducts()
+    //getProducts()
+
+    router.push('/address')
   }
 
   onMounted(() => {

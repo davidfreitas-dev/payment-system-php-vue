@@ -4,6 +4,7 @@ import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import ForgotView from '../views/ForgotView.vue'
 import ResetView from '../views/ResetView.vue'
+import AddressView from '../views/AddressView.vue'
 import CheckoutView from '../views/CheckoutView.vue'
 import PaymentsView from '../views/PaymentsView.vue'
 import FinishView from '../views/FinishView.vue'
@@ -35,6 +36,11 @@ const router = createRouter({
       path: '/forgot/reset',
       name: 'reset',
       component: ResetView
+    },
+    {
+      path: '/address',
+      name: 'address',
+      component: AddressView
     },
     {
       path: '/checkout',
