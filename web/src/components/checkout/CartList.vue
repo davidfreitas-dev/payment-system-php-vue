@@ -17,7 +17,7 @@
 <template>
   <div class="w-full lg:w-2/3">
     <div class="w-full bg-white px-4 pb-7 lg:p-10">
-      <div class="flex justify-between border-b pb-5"> <!-- header -->
+      <div class="flex justify-between border-b pb-3"> <!-- header -->
         <h1 class="font-semibold text-xl sm:text-2xl">Carrinho</h1>
         <h2 class="font-semibold text-xl sm:text-2xl">{{ storeCart.items.length }} Itens</h2>
       </div>
@@ -47,19 +47,13 @@
               </a>
 
               <div class="flex justify-center sm:hidden"> <!-- control quantity -->
-                <svg
-                  class="fill-current text-gray-600 cursor-pointer w-3"
-                  viewBox="0 0 448 512"
-                >
+                <svg class="fill-current text-gray-600 cursor-pointer w-3" viewBox="0 0 448 512">
                   <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
                 </svg>
 
                 <input class="mx-2 text-center w-8 bg-transparent" type="text" value="1">
 
-                <svg
-                  class="fill-current text-gray-600 cursor-pointer w-3"
-                  viewBox="0 0 448 512"
-                >
+                <svg class="fill-current text-gray-600 cursor-pointer w-3" viewBox="0 0 448 512">
                   <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
                 </svg>
               </div>
@@ -68,19 +62,13 @@
         </div>
         
         <div class="hidden sm:flex justify-center w-1/5"> <!-- control quantity -->
-          <svg
-            class="fill-current text-gray-600 cursor-pointer w-3"
-            viewBox="0 0 448 512"
-          >
+          <svg class="fill-current text-gray-600 cursor-pointer w-3" viewBox="0 0 448 512">
             <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
           </svg>
 
           <input class="mx-2 text-center w-8 bg-transparent" type="text" value="1">
 
-          <svg
-            class="fill-current text-gray-600 cursor-pointer w-3"
-            viewBox="0 0 448 512"
-          >
+          <svg class="fill-current text-gray-600 cursor-pointer w-3" viewBox="0 0 448 512">
             <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
           </svg>
         </div>
@@ -90,7 +78,12 @@
         <span class="hidden sm:block text-center w-1/5 font-semibold text-sm">{{ $filters.currencyBRL(getTotalItem(item)) }}</span> <!-- total -->
       </div>
 
-      <div class="flex flex-row justify-between items-center mt-10"> <!-- table footer -->
+      <div class="sm:hidden flex flex-row justify-between items-center mt-3">
+        <span class="text-xl font-semibold">Total: </span>
+        <span class="text-xl font-semibold">{{ $filters.currencyBRL(storeCart.total) }}</span>
+      </div>
+
+      <div class="flex flex-row justify-between items-center mt-5"> <!-- table footer -->
         <a @click="router.go(-1)" class="flex font-semibold text-brand text-sm cursor-pointer">    
           <svg
             class="fill-current mr-2 text-brand w-4"
@@ -101,7 +94,7 @@
           Continuar Comprando
         </a>
 
-        <span class="text-xl font-semibold">Total: {{ $filters.currencyBRL(storeCart.total) }}</span>
+        <span class="hidden sm:block text-xl font-semibold">Total: {{ $filters.currencyBRL(storeCart.total) }}</span>
       </div>
     </div>
   </div>
