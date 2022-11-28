@@ -38,6 +38,7 @@ $app->add(new Tuupola\Middleware\JwtAuthentication([
 ]));
 
 require_once('user.php');
+require_once('address.php');
 require_once('product.php');
 require_once('payment.php');
 
