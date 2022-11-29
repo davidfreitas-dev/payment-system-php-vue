@@ -1,16 +1,20 @@
 <script setup>
-  import { ref, reactive, inject, onMounted, watch } from 'vue'
+  import { ref, reactive, inject, watch } from 'vue'
   import { useToast } from '@/use/useToast'
+  import { useRouter } from 'vue-router'
   import { useSessionStore } from '@/stores/session'
   import HeadingForm from '@/components/login/HeadingForm.vue';
   import InputForm from '@/components/login/InputForm.vue';
   import ButtonForm from '@/components/login/ButtonForm.vue';
   import ToastMessage from '@/components/template/ToastMessage.vue';
 
+  const router = useRouter()
   const axios = inject('axios')
   const storeSession = useSessionStore()
 
   const address = reactive({
+    addressId: '',
+    personId: '',
     addressName: '',
     addressNumber: '',
     aliasAddress: '',
@@ -56,13 +60,45 @@
         isLoading.value = false
       });
   }
-  const handleSave = () => {
 
+  const saveAddress = (address) => {
+    isLoading.value = true
+
+    axios
+      .post('/address/add', address)
+      .then((response) => {
+        if (response.data.status === 'success') {
+          handleToast(response.data.status, response.data.data)
+
+          setTimeout(() => {
+            router.push('/')
+          }, 1000);
+        } else {
+          handleToast(response.data.status, response.data.data)                   
+        }                
+      })
+      .finally(() => {
+        isLoading.value = false
+      });
   }
 
-  onMounted(() => {
-    getAddress()
-  })
+  const validateAddress = () => {
+    if (!address.zipcode 
+        || !address.addressName 
+        || !address.addressNumber 
+        || !address.district 
+        || !address.city 
+        || !address.state
+    ) return handleToast("error", "Preencha todos os capos marcados com asterisco(*) e tente novamente.") 
+    
+    const user = storeSession.session.user
+
+    address.personId = user.idperson
+    address.addressId = 0
+    address.zipcode = address.zipcode.replace('-', '')
+
+    saveAddress(address)
+  }
 
   const { toast, toastData, handleToast } = useToast()
 </script>
@@ -76,7 +112,7 @@
               <InputForm 
                   v-model="address.zipcode" 
                   :type="'text'" 
-                  :label="'CEP'"
+                  :label="'CEP*'"
                   :placeholder="'00000-000'"
               />
           </div>
@@ -85,7 +121,7 @@
               <InputForm 
                   v-model="address.addressName" 
                   :type="'text'" 
-                  :label="'Endereço'"
+                  :label="'Endereço*'"
                   :placeholder="'Seu melhor endereço'"
               />
           </div>
@@ -94,7 +130,7 @@
               <InputForm 
                   v-model="address.addressNumber" 
                   :type="'text'" 
-                  :label="'Número'"
+                  :label="'Número*'"
                   :placeholder="'Número'"
               />
           </div>
@@ -112,7 +148,7 @@
               <InputForm 
                   v-model="address.district" 
                   :type="'text'" 
-                  :label="'Bairro'"
+                  :label="'Bairro*'"
                   :placeholder="'Bairro'"
               />
           </div>
@@ -121,7 +157,7 @@
               <InputForm 
                   v-model="address.city" 
                   :type="'text'" 
-                  :label="'Cidade'"
+                  :label="'Cidade*'"
                   :placeholder="'Cidade'"
               />
           </div>
@@ -130,7 +166,7 @@
               <InputForm 
                   v-model="address.state" 
                   :type="'text'" 
-                  :label="'Estado'"
+                  :label="'Estado*'"
                   :placeholder="'Estado'"
               />
           </div>
@@ -138,7 +174,7 @@
           <ButtonForm 
               :text="'Salvar'" 
               :is-loading="isLoading" 
-              @onClickButton="handleSave" 
+              @onClickButton="validateAddress" 
           />
       </div>
   </div>
