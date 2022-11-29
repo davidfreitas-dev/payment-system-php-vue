@@ -25,7 +25,7 @@
   }
 
   const getAddresses = async () => {  
-    const user = storeSession.session.user
+    const user = storeSession.session
 
     const results = await axios
       .get(`/addresses/${user.idperson}`)
@@ -56,9 +56,11 @@
   }
 
   const verifySession = () => {
-    if (!storeSession.session.hasOwnProperty('token')) {
-      return router.push('/login')
-    }
+    const user = storeSession.session
+
+    if (!user.hasOwnProperty('token')) {
+      router.push('/login')
+    } 
 
     verifyAddresses()
   }

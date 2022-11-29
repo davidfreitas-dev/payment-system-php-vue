@@ -18,8 +18,12 @@
 
   const router = useRouter()
 
+  const user = ref({})
+
   const verifySession = () => {
-    if (!storeSession.session.hasOwnProperty('token')) {
+    user = storeSession.session
+
+    if (!user.hasOwnProperty('token')) {
       router.push('/login')
     }        
   }
@@ -30,7 +34,7 @@
   })
 
   const isView = computed(() => {
-    return storeSession.session.hasOwnProperty('token')
+    return user.hasOwnProperty('token')
   })
 
   const modal = ref(null)

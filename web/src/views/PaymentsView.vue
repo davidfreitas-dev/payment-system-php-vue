@@ -9,11 +9,13 @@
   const axios = inject('axios')
 
   const verifySession = () => {
-    if (storeSession.session.hasOwnProperty('token')) {
-      return getPayments()
-    }
+    const user = storeSession.session
 
-    router.push('/login')
+    if (!user.hasOwnProperty('token')) {
+      router.push('/login')
+    } 
+    
+    getPayments()
   }
 
   const isLoading = ref(false)

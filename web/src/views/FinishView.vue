@@ -29,8 +29,10 @@
   }
 
   const verifySession = () => {
-    if (!storeSession.session.hasOwnProperty('token')) {
-      return router.push('/login')
+    const user = storeSession.session
+
+    if (!user.hasOwnProperty('token')) {
+      router.push('/login')
     }    
 
     handlePay(storePayment.data)

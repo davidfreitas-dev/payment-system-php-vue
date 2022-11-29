@@ -97,7 +97,7 @@
         || !address.state
     ) return handleToast("error", "Preencha todos os capos marcados com asterisco(*) e tente novamente.") 
     
-    const user = storeSession.session.user
+    const user = storeSession.session
 
     address.personId = user.idperson
     address.addressId = 0
