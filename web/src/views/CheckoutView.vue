@@ -14,9 +14,7 @@
     const storeCart = useCartStore()
 
     const verifySession = () => {
-      const user = storeSession.session
-
-      if (!user.hasOwnProperty('token')) {
+      if (!storeSession.session.hasOwnProperty('token')) {
         router.push('/login')
       } 
     }

@@ -39,15 +39,20 @@
     return results
   }
   
-  const setAddress = (address) => {
-    console.log(address)
+  const setAddressToSession = (address) => {
+    const json = sessionStorage.getItem('session')
+    const obj = JSON.parse(json) || {}    
+    let session = typeof obj === 'object' ? obj : {}
+    
+    session.address = address
+    storeSession.setSession(session)
   }
 
   const verifyAddresses = async () => {
     const addresses = await getAddresses()
 
     if (Array.isArray(addresses) && addresses.length) {
-      setAddress(addresses[0])
+      setAddressToSession(addresses[0])
 
       getProducts()
     } else {
@@ -56,10 +61,8 @@
   }
 
   const verifySession = () => {
-    const user = storeSession.session
-
-    if (!user.hasOwnProperty('token')) {
-      router.push('/login')
+    if (!storeSession.session.hasOwnProperty('token')) {
+      return router.push('/login')
     } 
 
     verifyAddresses()
