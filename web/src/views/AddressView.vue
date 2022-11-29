@@ -2,6 +2,7 @@
   import { ref, reactive, inject, onMounted } from 'vue'
   import { useToast } from '@/use/useToast'
   import { useSessionStore } from '@/stores/session'
+  import ToastMessage from '../components/template/ToastMessage.vue';
 
   const axios = inject('axios')
   const storeSession = useSessionStore()
@@ -16,8 +17,16 @@
     district: '',
     city: '',
     state: '',
-    zipcode: '02169000'
+    zipcode: ''
   })
+
+  const handleFill = (data) => {
+    address.addressName = data.logradouro
+    address.district = data.bairro
+    address.city = data.localidade
+    address.state = data.uf
+    address.zipcode = data.cep
+  }
 
   const getAddress = () => {
     isLoading.value = true
@@ -26,7 +35,7 @@
       .post('/getbycep', { cep: address.zipcode })
       .then((response) => {
         if (response.data.status === 'success') {
-          console.log(response.data.data)
+          handleFill(response.data.data)
         } else {
           handleToast(response.data.status, response.data.data)                   
         }                
@@ -43,4 +52,6 @@
   const { toast, toastData, handleToast } = useToast()
 </script>
 
-<template></template>
+<template>
+  <ToastMessage ref="toast" :toastData="toastData"/>
+</template>
