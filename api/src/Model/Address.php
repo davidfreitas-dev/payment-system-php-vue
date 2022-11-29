@@ -34,6 +34,35 @@ class Address {
 
     }
 
+    public static function all($personId) 
+    {
+      
+      $sql = "SELECT * FROM tb_addresses WHERE idperson = $personId";		
+      
+      try {
+
+        $db = new Database();
+
+        $results = $db->select($sql);
+        
+        if (count($results) > 0) {
+
+          return Response::handleResponse("success", $results);
+
+        } else {
+
+          return Response::handleResponse("success", "Nenhum endereço encontrado!");
+
+        }
+
+      } catch (PDOException $e) {
+
+        return Response::handleResponse("error", "Falha ao obter endereços: " . $e->getMessage());
+        
+      }		
+
+    }
+
     public static function save($address)
     {
 
@@ -45,7 +74,7 @@ class Address {
 
         $results = $db->select($sql, array(
           ":idaddress"=>$address['addressId'],
-          ":idperson"=>$address['userId'],
+          ":idperson"=>$address['personId'],
           ":desaddress"=>$address['addressName'],
           ":desnumber"=>$address['addressNumber'],
           ":descomplement"=>$address['complement'],

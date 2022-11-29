@@ -16,6 +16,18 @@ $app->post('/getbycep', function (Request $request, Response $response) {
 
 });
 
+$app->get('/addresses/{id}', function (Request $request, Response $response) {
+
+  $id = $request->getAttribute('id');
+
+  $result = Address::all($id);
+
+  $response->getBody()->write($result);
+
+  return $response->withHeader('content-type', 'application/json');
+
+});
+
 $app->post('/address/add', function (Request $request, Response $response) {
 
   $data = $request->getParsedBody();
