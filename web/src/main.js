@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import { VueClipboard } from '@soerenmartius/vue3-clipboard'
 
 import App from './App.vue'
 import router from './router'
@@ -25,6 +26,8 @@ app.config.globalProperties.$filters = {
 
 app.use(pinia)
 app.use(router)
+
+app.use(VueClipboard)
 
 app.use(VueAxios, axios)
 app.provide('axios', app.config.globalProperties.axios)
