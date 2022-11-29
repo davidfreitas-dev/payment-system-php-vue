@@ -25,11 +25,17 @@
     zipcode: ''
   })
 
+  const blockFields = ref(true)
+
   watch(
     () => address.zipcode,
     (zipcode) => {
-      if (zipcode.length === 8) {
+      if (zipcode.length > 7) {
         getAddress()
+
+        blockFields.value = false
+      } else {
+        blockFields.value = true
       }
     }
   )
@@ -123,6 +129,7 @@
                   :type="'text'" 
                   :label="'Endereço*'"
                   :placeholder="'Seu melhor endereço'"
+                  :disabled="blockFields"
               />
           </div>
 
@@ -132,6 +139,7 @@
                   :type="'text'" 
                   :label="'Número*'"
                   :placeholder="'Número'"
+                  :disabled="blockFields"
               />
           </div>
 
@@ -141,6 +149,7 @@
                   :type="'text'" 
                   :label="'Complemento'"
                   :placeholder="'Complemento'"
+                  :disabled="blockFields"
               />
           </div>
 
@@ -150,6 +159,7 @@
                   :type="'text'" 
                   :label="'Bairro*'"
                   :placeholder="'Bairro'"
+                  :disabled="blockFields"
               />
           </div>
 
@@ -159,6 +169,7 @@
                   :type="'text'" 
                   :label="'Cidade*'"
                   :placeholder="'Cidade'"
+                  :disabled="blockFields"
               />
           </div>
 
@@ -168,6 +179,7 @@
                   :type="'text'" 
                   :label="'Estado*'"
                   :placeholder="'Estado'"
+                  :disabled="blockFields"
               />
           </div>
 

@@ -1,7 +1,7 @@
 <script setup>
     const emit = defineEmits(['update:modelValue', 'onKeyupEnter'])
     
-    const props = defineProps(['type', 'label', 'modelValue', 'placeholder'])
+    const props = defineProps(['type', 'label', 'modelValue', 'placeholder', 'disabled'])
 
     const updateValue = (event) => {
         emit('update:modelValue', event.target.value)
@@ -14,6 +14,7 @@
         :type="type"
         :value="modelValue"
         :placeholder="placeholder"
+        :disabled="disabled"
         @input="updateValue"
         @keyup.enter="$emit('onKeyupEnter')"
     />
