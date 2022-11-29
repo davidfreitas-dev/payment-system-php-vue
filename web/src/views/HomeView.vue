@@ -24,13 +24,43 @@
       })
   }
 
+  const getAddresses = async () => {  
+    const user = storeSession.session.user
+
+    const results = await axios
+      .get(`/addresses/${user.idperson}`)
+      .then((response) => {
+        return response.data.data
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+
+    return results
+  }
+  
+  const setAddress = (address) => {
+    console.log(address)
+  }
+
+  const verifyAddresses = async () => {
+    const addresses = await getAddresses()
+
+    if (Array.isArray(addresses) && addresses.length) {
+      setAddress(addresses[0])
+
+      getProducts()
+    } else {
+      router.push('/address')
+    }
+  }
+
   const verifySession = () => {
     if (!storeSession.session.hasOwnProperty('token')) {
       return router.push('/login')
     }
-    
-    // getProducts()
-    router.push('/address')
+
+    verifyAddresses()
   }
 
   onMounted(() => {
