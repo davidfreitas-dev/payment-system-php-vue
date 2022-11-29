@@ -15,3 +15,15 @@ $app->post('/getbycep', function (Request $request, Response $response) {
   return $response->withHeader('content-type', 'application/json');
 
 });
+
+$app->post('/address/add', function (Request $request, Response $response) {
+
+  $data = $request->getParsedBody();
+
+  $result = Address::save($data);
+
+  $response->getBody()->write($result);
+
+  return $response->withHeader('content-type', 'application/json');
+
+});

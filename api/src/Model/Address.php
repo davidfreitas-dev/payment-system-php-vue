@@ -34,4 +34,40 @@ class Address {
 
     }
 
+    public static function save($address)
+    {
+
+      $sql = "CALL sp_addresses_save(:idaddress, :idperson, :desaddress, :desnumber, :descomplement, :descity, :desstate, :descountry, :deszipcode, :desdistrict)";
+
+      try {
+        
+        $db = new Database();
+
+        $results = $db->select($sql, array(
+          ":idaddress"=>$address['addressId'],
+          ":idperson"=>$address['userId'],
+          ":desaddress"=>$address['addressName'],
+          ":desnumber"=>$address['addressNumber'],
+          ":descomplement"=>$address['complement'],
+          ":descity"=>$address['city'],
+          ":desstate"=>$address['state'],
+          ":descountry"=>'Brasil',
+          ":deszipcode"=>$address['zipcode'],
+          ":desdistrict"=>$address['district']
+        ));
+
+        if (count($results) > 0) {
+          
+          return Response::handleResponse("success", "Endereço cadastrado com sucesso!");
+          
+        }
+
+      } catch (PDOException $e) {
+        
+        return Response::handleResponse("error", "Falha ao cadastrar endereço: " . $e->getMessage());
+
+      }      
+
+    }
+
 }
